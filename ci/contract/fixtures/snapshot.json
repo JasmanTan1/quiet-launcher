@@ -1,0 +1,79 @@
+{
+  "roomId": "room_demo",
+  "seq": 10,
+  "serverNow": 1800000000000,
+  "tvConnected": true,
+  "playlists": [
+    {
+      "id": "playlist_demo",
+      "name": "Evening Mix",
+      "scene": "calm",
+      "trackCount": 3
+    }
+  ],
+  "activePlaylistId": "playlist_demo",
+  "resume": {
+    "playlistId": "playlist_demo",
+    "trackId": "track_1",
+    "positionSec": 12.5
+  },
+  "paused": false,
+  "timer": {
+    "id": "timer_demo",
+    "endsAt": 1800000900000,
+    "durationSec": 900
+  },
+  "queue": {
+    "playlistId": "playlist_demo",
+    "custom": false,
+    "tracks": [
+      {
+        "id": "track_1",
+        "title": "Synthetic Tone 1",
+        "artist": "Fixture Ensemble",
+        "durationSec": 120,
+        "gainDb": null
+      },
+      {
+        "id": "track_2",
+        "title": "Synthetic Tone 2",
+        "artist": "Fixture Ensemble",
+        "durationSec": 120,
+        "gainDb": null
+      },
+      {
+        "id": "track_3",
+        "title": "Synthetic Tone 3",
+        "artist": "Fixture Ensemble",
+        "durationSec": 120,
+        "gainDb": null
+      }
+    ],
+    "anchorId": null
+  },
+  "message": null,
+  "picture": {
+    "scene": null,
+    "uploadId": null
+  },
+  "volume": 65,
+  "cmd": {
+    "n": 4,
+    "action": "play"
+  },
+  "gainRev": 1,
+  "gains": [
+    {
+      "id": "track_1",
+      "gainDb": null
+    },
+    {
+      "id": "track_2",
+      "gainDb": null
+    },
+    {
+      "id": "track_3",
+      "gainDb": null
+    }
+  ]
+}

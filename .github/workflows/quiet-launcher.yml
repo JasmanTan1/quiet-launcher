@@ -1,0 +1,48 @@
+name: Quiet Launcher verification
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+    inputs:
+      application_checks:
+        description: 'Run candidate checks with pre-provisioned offline caches (no installs)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: launcher-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Offline contract and mock checks
+        run: python3 -I ci/check.py contract --product launcher --report "$RUNNER_TEMP/contract-results.json"
+  application:
+    if: github.event_name == 'workflow_dispatch' && inputs.application_checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    needs: contract
+    env:
+      JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
+      GRADLE_USER_HOME: ${{ runner.temp }}/gradle
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Prepare source copy without Git history
+        run: python3 -I ci/export.py --root . --output "$RUNNER_TEMP/candidate" --product launcher
+      - name: Verify candidate in a namespace with no network interfaces
+        run: |
+          test -x "$JAVA_HOME/bin/java"
+          test -d "$ANDROID_HOME"
+          CI_PARENT_NETNS=$(stat -Lc '%i' /proc/self/ns/net)
+          export CI_PARENT_NETNS
+          sudo --preserve-env=PATH,JAVA_HOME,ANDROID_HOME,ANDROID_SDK_ROOT,GRADLE_USER_HOME,GITHUB_ACTIONS,RUNNER_ENVIRONMENT,CI_PARENT_NETNS unshare --net --setgid "$(id -g)" --setuid "$(id -u)" python3 -I "$RUNNER_TEMP/candidate/ci/build.py" --product launcher --root "$RUNNER_TEMP/candidate" --report "$RUNNER_TEMP/application-results.json"

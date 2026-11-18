@@ -1,0 +1,19 @@
+{
+  "adapter-interface.ts": "62740a5fdff58a5a841d4a1777d87a0d8ff99c1cf30fc550a6ddbf55f3973177",
+  "contract.md": "fe7d411a1b3a69f412babe7944c765849147573d391e4e36c63d50424b1239ae",
+  "fixtures/README.md": "25b3ebad6814586ef582ecb6fb24f5f59a7ce98cc0d199cb1c712628f4ffa9a2",
+  "fixtures/geometric.png": "781a85752fcaea61319e32604a4b3b0739e6198f5f90861af1ebbe23d1fbbcd5",
+  "fixtures/guest-state.json": "38d897ec1e2f4f3a494f5a63697ddeb4838bc30a28f24dc16c35365b9384ece8",
+  "fixtures/http-cases.json": "76affc8a2a51d7034de210350724c266514a0cd8d108fbe5a401ae7c5cf0d3a4",
+  "fixtures/launcher.json": "c683ec17b327f0cf244978a79d2a04c4758917917974fc4a8017f700a9a3855d",
+  "fixtures/media.json": "ff2b01dbcfae406e2e282bf7721db63f73270e982d4dba2515bd62bd1a806690",
+  "fixtures/party-qr.json": "9fffbec1319e9e3ffa1fb985a5a223c2cd67f6fe048146b1e70fea99d6b4702b",
+  "fixtures/playlist.json": "ce79c5e8c782166fd993603199ff860eabeb314e31145edeef6729e45c299e6f",
+  "fixtures/schema-cases.json": "507c414b7aded8810ab83c9ff0d9102aebcde8f710864b2020d51ac4f3e98aa9",
+  "fixtures/snapshot.json": "666983f1d76fdd9f61921ac005d8a49ad26119ee98da1e6f6ab39e21795222b0",
+  "fixtures/tone.wav": "a3dd1efb35a4c8a7c8d8a2af5ff0cc8c47b7e0c986e8713540b5bf55fe247d41",
+  "fixtures/transition-cases.json": "284d02c0795f6dfa88421d1a69e6c65efa567904fc964e65e49a8bb16ee9969f",
+  "fixtures/verification-matrix.json": "f6f0818619cea8f35654f902992e276bdab96e54d65d4d73540a11ee7a53169d",
+  "identities.json": "b978e1a10f79f10a52ee0031195032a4141ed4294b57de4a8b7a4bcc7f4888e9",
+  "openapi.json": "7d9f0831f448c113e61d0d784dd09893b899582eb1adf47b174cdda4a5b693e4"
+}

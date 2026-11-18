@@ -1,0 +1,25 @@
+{
+  "profiles": [
+    {
+      "id": "profile_1",
+      "name": "Profile One",
+      "apps": [
+        "org.example.clock",
+        "org.example.gallery"
+      ]
+    },
+    {
+      "id": "profile_2",
+      "name": "Profile Two",
+      "apps": []
+    }
+  ],
+  "installedApps": [
+    {
+      "packageId": "org.example.clock",
+      "label": "Clock"
+    }
+  ],
+  "missingApp": "org.example.gallery",
+  "initialFocus": "org.example.clock"
+}

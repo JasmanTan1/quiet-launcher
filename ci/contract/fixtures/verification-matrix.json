@@ -1,0 +1,142 @@
+{
+  "status": "required future implementation checks; P0 has not executed them",
+  "network": "in-process injected mocks only; deny external egress",
+  "media": "newly generated tones and geometric image only",
+  "providers": [
+    "OpenSubsonic",
+    "Jellyfin"
+  ],
+  "checks": [
+    {
+      "id": "setup",
+      "owners": "P6/P5",
+      "expectation": "Fresh coordinator has no configuration. Wrong/expired/used console code denied; valid setup commits atomically; second setup conflicts; config reads redact credentials."
+    },
+    {
+      "id": "pairing",
+      "owners": "P2/P6/P5",
+      "expectation": "Claim requires secret; pending/approved/expired states, wrong code, replacement revokes old TV; display code alone cannot claim; duplicate claim is bounded by expiry."
+    },
+    {
+      "id": "auth",
+      "owners": "P2/P6/P5",
+      "expectation": "Host 12 h and TV 30 day expiry, revoke and restart persistence; role/room isolation; revocation precedes cache lookup and aborts streams; TV clears state on 401."
+    },
+    {
+      "id": "resume",
+      "owners": "P2/P6/P5",
+      "expectation": "Valid sample counters advance; stale/reordered/wrong-session/post-stop samples cannot overwrite; app restart persists counter; track membership/duration enforced."
+    },
+    {
+      "id": "playback",
+      "owners": "P2/P6/P5",
+      "expectation": "Default/explicit playlist, empty/missing/unlinked playlist, loop/resume/pause/next, disconnected renderer, Back/Home teardown and offline recovery."
+    },
+    {
+      "id": "revisions",
+      "owners": "P2/P6/P5",
+      "expectation": "Out-of-order seq ignored, same seq with newer gainRev applied; command baseline, new command once, repeated physical key ignored; long-poll wake/timeout and fallback pacing."
+    },
+    {
+      "id": "idempotency",
+      "owners": "P6/P5",
+      "expectation": "Every write: identical retry returns original result, divergent body conflicts, scope isolated by principal/path; persistence across restart; expired/revoked/blocked tokens cannot replay."
+    },
+    {
+      "id": "timer",
+      "owners": "P2/P6/P5",
+      "expectation": "1/240 boundaries, fraction/0/241 rejection, skew/delayed responses, two chimes and duck/restore, pause/zero volume preserved; no playback stop; stale expiry silent; old completion cannot clear replacement."
+    },
+    {
+      "id": "queue",
+      "owners": "P2/P6/P5",
+      "expectation": "Next/end/wrap/move/remove/reset, unique track, successor anchor when current removed, max 5000, 12 h edit expiry, playlist switch; local save never writes upstream."
+    },
+    {
+      "id": "message",
+      "owners": "P2/P6/P5",
+      "expectation": "NFC/whitespace/control/bidi cleaning, 1/60/61 code points, ZWJ/ZWNJ preserved, all styles, monotonic expiry even unchanged seq or outage."
+    },
+    {
+      "id": "photo",
+      "owners": "P2/P6/P5",
+      "expectation": "Authorized CPU-only decode, MIME mismatch/malformed/animated/oversize/pixel bomb refusals, orientation, metadata removal, 1920 bound, no upscale, three-file retention and failed-write cleanup."
+    },
+    {
+      "id": "party_lifetime",
+      "owners": "P2/P6/P5",
+      "expectation": "Default off, enable while active, stable token, disable/re-enable, stop/renew/unpair/12 h expiry; no silent renewal; purge pending membership/key/idempotency; preserve host queue/current item."
+    },
+    {
+      "id": "qr",
+      "owners": "P2/P6/P5",
+      "expectation": "Fragment link and no-referrer, QR decodes to configured origin; once-per-URL rendering, renew, monotonic expiry through outage/delayed rendering; no overlap with clock/message."
+    },
+    {
+      "id": "guest_library",
+      "owners": "P6/P5",
+      "expectation": "Library-only search and membership-checked add; reject online flag, external ID and URL even when mixed with valid track; duplicate request conflict, no fetch state or provider egress beyond mock."
+    },
+    {
+      "id": "guest_permissions",
+      "owners": "P6/P5",
+      "expectation": "Join key binding, own waiting removal/current controls only, wrong-key/another-party denial, anonymous state contains no privileged data, guest cannot reach host/config/photo endpoints."
+    },
+    {
+      "id": "moderation",
+      "owners": "P6/P5",
+      "expectation": "Host remove waiting/playing, block clears requests/skips current and denies all keyed calls/rejoin; unblock restores permission only; new-browser bypass disclosed."
+    },
+    {
+      "id": "party_order",
+      "owners": "P6/P5",
+      "expectation": "First come, round robin, recent guest last, tie break, setting change, stable host slots, current-item preservation and 40-entry guest projection."
+    },
+    {
+      "id": "limits",
+      "owners": "P6/P5",
+      "expectation": "Each documented actor/address rate limit, Retry-After, max guests and request-body bounds; unauthenticated upload rejected before buffering."
+    },
+    {
+      "id": "opensubsonic",
+      "owners": "P6/P5",
+      "expectation": "Injected mock transport: authentication composition/redaction, paginated library/playlists, stable IDs, search, 404, malformed response, timeout, byte ranges and cancellation."
+    },
+    {
+      "id": "jellyfin",
+      "owners": "P6/P5",
+      "expectation": "Injected mock transport: authentication composition/redaction, paginated audio library/playlists, stable IDs, search, 404, malformed response, timeout, byte ranges and cancellation."
+    },
+    {
+      "id": "provider_isolation",
+      "owners": "P6/P5",
+      "expectation": "No upstream URL/secret in JSON, redirects remain configured origin; credentials never forwarded cross-origin; missing/non-audio track never invokes acquisition."
+    },
+    {
+      "id": "launcher",
+      "owners": "P3/P5",
+      "expectation": "Empty first profile/app picker; generic profile persistence; intent discovery deduplicated; focus movement, missing app, root/subpage Back and Home; no network/broad visibility permission."
+    },
+    {
+      "id": "screenshots_bgm",
+      "owners": "P2/P4/P5",
+      "expectation": "Regenerate setup, playing scene, timer, guest join, queue/moderation, message/photo screens from these fixtures; strip metadata and review visually."
+    },
+    {
+      "id": "screenshots_launcher",
+      "owners": "P3/P4/P5",
+      "expectation": "Regenerate initial Home, focus movement, app picker, missing app and generic profiles; strip metadata and review visually."
+    },
+    {
+      "id": "release_boundary",
+      "owners": "P1/P4/P5/P7",
+      "expectation": "License/asset evidence, wrapper and pinned dependency provenance, fresh-directory builds, final source and artifact scans; private provenance excluded; independent product acceptance."
+    }
+  ],
+  "report": {
+    "passed": "integer",
+    "failed": "integer",
+    "skipped": "integer with explicit reasons",
+    "notVerified": "explicit list"
+  }
+}

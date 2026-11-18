@@ -1,0 +1,4 @@
+{
+  "bgm": ["setup", "playing-scene", "timer", "guest-join", "queue-moderation", "message-photo"],
+  "launcher": ["initial-home", "focus-movement", "app-selection", "missing-app", "generic-profiles"]
+}

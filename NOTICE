@@ -1,0 +1,10 @@
+Quiet Launcher
+Copyright 2026 Jasman-Studio
+
+This source distribution contains launcher lifecycle, application selection,
+profile persistence, D-pad tests and programmatic backdrop code. Project source
+and documentation are offered under Apache-2.0.
+
+Android and dependency projects retain their own notices and licenses.
+The Gradle wrapper scripts and JAR preserve their upstream copyright and
+Apache-2.0 notices. See third-party-licenses/Gradle.txt and THIRD-PARTY.md.

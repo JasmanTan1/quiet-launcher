@@ -1,0 +1,509 @@
+[
+  {
+    "name": "timer_skew",
+    "domain": "deadline",
+    "input": {
+      "serverNow": 1800000000000,
+      "localMonotonic": 1000,
+      "expiresAt": 1800000005000,
+      "elapsedMs": 4999
+    },
+    "expected": {
+      "visible": true,
+      "remainingMs": 1
+    }
+  },
+  {
+    "name": "timer_exact_expiry",
+    "domain": "deadline",
+    "input": {
+      "serverNow": 1800000000000,
+      "localMonotonic": 1000,
+      "expiresAt": 1800000005000,
+      "elapsedMs": 5000
+    },
+    "expected": {
+      "visible": false,
+      "remainingMs": 0
+    }
+  },
+  {
+    "name": "qr_outage_expiry",
+    "domain": "deadline",
+    "input": {
+      "serverNow": 1800000000000,
+      "localMonotonic": 1000,
+      "expiresAt": 1800000005000,
+      "elapsedMs": 6000
+    },
+    "expected": {
+      "visible": false,
+      "remainingMs": 0
+    }
+  },
+  {
+    "name": "slow_response_expired",
+    "domain": "deadline",
+    "input": {
+      "serverNow": 1800000000000,
+      "localMonotonic": 1000,
+      "expiresAt": 1800000001000,
+      "elapsedMs": 1500
+    },
+    "expected": {
+      "visible": false,
+      "remainingMs": 0
+    }
+  },
+  {
+    "name": "same_command",
+    "domain": "command",
+    "input": {
+      "seenN": 4,
+      "incomingN": 4,
+      "entering": false
+    },
+    "expected": {
+      "execute": false,
+      "seenN": 4
+    }
+  },
+  {
+    "name": "new_command",
+    "domain": "command",
+    "input": {
+      "seenN": 4,
+      "incomingN": 5,
+      "entering": false
+    },
+    "expected": {
+      "execute": true,
+      "seenN": 5
+    }
+  },
+  {
+    "name": "old_command",
+    "domain": "command",
+    "input": {
+      "seenN": 5,
+      "incomingN": 4,
+      "entering": false
+    },
+    "expected": {
+      "execute": false,
+      "seenN": 5
+    }
+  },
+  {
+    "name": "entry_baseline",
+    "domain": "command",
+    "input": {
+      "seenN": 0,
+      "incomingN": 5,
+      "entering": true
+    },
+    "expected": {
+      "execute": false,
+      "seenN": 5
+    }
+  },
+  {
+    "name": "queue_next",
+    "domain": "queue_insert",
+    "input": {
+      "queue": [
+        "a",
+        "b",
+        "c"
+      ],
+      "current": "b",
+      "track": "a",
+      "where": "next"
+    },
+    "expected": {
+      "queue": [
+        "b",
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "name": "queue_end",
+    "domain": "queue_insert",
+    "input": {
+      "queue": [
+        "a",
+        "b",
+        "c"
+      ],
+      "current": "b",
+      "track": "d",
+      "where": "end"
+    },
+    "expected": {
+      "queue": [
+        "a",
+        "d",
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "name": "queue_move_existing",
+    "domain": "queue_insert",
+    "input": {
+      "queue": [
+        "a",
+        "b",
+        "c"
+      ],
+      "current": "a",
+      "track": "c",
+      "where": "next"
+    },
+    "expected": {
+      "queue": [
+        "a",
+        "c",
+        "b"
+      ]
+    }
+  },
+  {
+    "name": "fifo",
+    "domain": "party_order",
+    "input": {
+      "waiting": [
+        {
+          "id": 1,
+          "guestId": "g1"
+        },
+        {
+          "id": 2,
+          "guestId": "g1"
+        },
+        {
+          "id": 3,
+          "guestId": "g2"
+        }
+      ],
+      "order": "first_come",
+      "lastTurn": {}
+    },
+    "expected": {
+      "ids": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "name": "round_robin",
+    "domain": "party_order",
+    "input": {
+      "waiting": [
+        {
+          "id": 1,
+          "guestId": "g1"
+        },
+        {
+          "id": 2,
+          "guestId": "g1"
+        },
+        {
+          "id": 3,
+          "guestId": "g2"
+        }
+      ],
+      "order": "take_turns",
+      "lastTurn": {}
+    },
+    "expected": {
+      "ids": [
+        1,
+        3,
+        2
+      ]
+    }
+  },
+  {
+    "name": "recent_guest_last",
+    "domain": "party_order",
+    "input": {
+      "waiting": [
+        {
+          "id": 1,
+          "guestId": "g1"
+        },
+        {
+          "id": 2,
+          "guestId": "g1"
+        },
+        {
+          "id": 3,
+          "guestId": "g2"
+        }
+      ],
+      "order": "take_turns",
+      "lastTurn": {
+        "g1": 10
+      }
+    },
+    "expected": {
+      "ids": [
+        3,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "name": "old_timer_completion",
+    "domain": "timer_complete",
+    "input": {
+      "storedTimerId": "new",
+      "completedTimerId": "old",
+      "activePlaylistId": "playlist_demo"
+    },
+    "expected": {
+      "ignored": true,
+      "timerId": "new",
+      "activePlaylistId": "playlist_demo"
+    }
+  },
+  {
+    "name": "timer_keeps_playing",
+    "domain": "timer_complete",
+    "input": {
+      "storedTimerId": "same",
+      "completedTimerId": "same",
+      "activePlaylistId": "playlist_demo"
+    },
+    "expected": {
+      "ignored": false,
+      "timerId": null,
+      "activePlaylistId": "playlist_demo"
+    }
+  },
+  {
+    "name": "resume_reordered",
+    "domain": "resume",
+    "input": {
+      "storedN": 9,
+      "sampleN": 8,
+      "sessionMatches": true
+    },
+    "expected": {
+      "stored": false
+    }
+  },
+  {
+    "name": "resume_newer",
+    "domain": "resume",
+    "input": {
+      "storedN": 9,
+      "sampleN": 10,
+      "sessionMatches": true
+    },
+    "expected": {
+      "stored": true
+    }
+  },
+  {
+    "name": "resume_previous_session",
+    "domain": "resume",
+    "input": {
+      "storedN": 0,
+      "sampleN": 10,
+      "sessionMatches": false
+    },
+    "expected": {
+      "stored": false
+    }
+  },
+  {
+    "name": "message_clean",
+    "domain": "message",
+    "input": {
+      "raw": "  Welcome‮  to​ the room  "
+    },
+    "expected": {
+      "text": "Welcome to the room"
+    }
+  },
+  {
+    "name": "message_nfc",
+    "domain": "message",
+    "input": {
+      "raw": "Café"
+    },
+    "expected": {
+      "text": "Café"
+    }
+  },
+  {
+    "name": "message_emoji_joiner",
+    "domain": "message",
+    "input": {
+      "raw": "👩‍🍳"
+    },
+    "expected": {
+      "text": "👩‍🍳"
+    }
+  },
+  {
+    "name": "message_empty",
+    "domain": "message",
+    "input": {
+      "raw": " ​ "
+    },
+    "expected": {
+      "text": null
+    }
+  },
+  {
+    "name": "message_limit",
+    "domain": "message",
+    "input": {
+      "raw": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "expected": {
+      "text": null
+    }
+  },
+  {
+    "name": "party_expired",
+    "domain": "party_access",
+    "input": {
+      "now": 1800000000000,
+      "expiresAt": 1800000000000,
+      "ended": false,
+      "enabled": true,
+      "blocked": false
+    },
+    "expected": {
+      "error": "ended"
+    }
+  },
+  {
+    "name": "party_disabled",
+    "domain": "party_access",
+    "input": {
+      "now": 1800000000000,
+      "expiresAt": 1800000000001,
+      "ended": false,
+      "enabled": false,
+      "blocked": false
+    },
+    "expected": {
+      "error": "off"
+    }
+  },
+  {
+    "name": "guest_blocked",
+    "domain": "party_access",
+    "input": {
+      "now": 1800000000000,
+      "expiresAt": 1800000000001,
+      "ended": false,
+      "enabled": true,
+      "blocked": true
+    },
+    "expected": {
+      "error": "blocked"
+    }
+  },
+  {
+    "name": "party_live",
+    "domain": "party_access",
+    "input": {
+      "now": 1800000000000,
+      "expiresAt": 1800000000001,
+      "ended": false,
+      "enabled": true,
+      "blocked": false
+    },
+    "expected": {
+      "error": null
+    }
+  },
+  {
+    "name": "own_current_control",
+    "domain": "guest_control",
+    "input": {
+      "guestId": "guest_1",
+      "currentGuestId": "guest_1",
+      "hasCurrent": true
+    },
+    "expected": {
+      "allowed": true
+    }
+  },
+  {
+    "name": "other_current_control",
+    "domain": "guest_control",
+    "input": {
+      "guestId": "guest_1",
+      "currentGuestId": "guest_2",
+      "hasCurrent": true
+    },
+    "expected": {
+      "allowed": false
+    }
+  },
+  {
+    "name": "no_current_control",
+    "domain": "guest_control",
+    "input": {
+      "guestId": "guest_1",
+      "currentGuestId": null,
+      "hasCurrent": false
+    },
+    "expected": {
+      "allowed": false
+    }
+  },
+  {
+    "name": "block_removes_waiting_and_skips_current",
+    "domain": "block",
+    "input": {
+      "guestId": "g1",
+      "currentGuestId": "g1",
+      "waiting": [
+        {
+          "id": 1,
+          "guestId": "g1"
+        },
+        {
+          "id": 2,
+          "guestId": "g2"
+        }
+      ]
+    },
+    "expected": {
+      "skipCurrent": true,
+      "remainingRequestIds": [
+        2
+      ]
+    }
+  },
+  {
+    "name": "timer_event_schedule",
+    "domain": "timer_schedule",
+    "input": {
+      "elapsedMs": 8100
+    },
+    "expected": {
+      "chimeTimesMs": [
+        1200,
+        3600
+      ],
+      "restoreStartsMs": 5600,
+      "finished": true,
+      "stopPlayback": false
+    }
+  }
+]

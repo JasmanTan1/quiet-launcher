@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Independent product verification report",
+  "type": "object",
+  "required": ["formatVersion", "product", "kind", "passed", "failed", "skipped", "checks", "notVerified"],
+  "properties": {
+    "formatVersion": {"const": 1},
+    "product": {"enum": ["bgm", "launcher"]},
+    "kind": {"type": "string"},
+    "passed": {"type": "integer", "minimum": 0},
+    "failed": {"type": "integer", "minimum": 0},
+    "skipped": {"type": "integer", "minimum": 0},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "status": {"enum": ["passed", "failed", "skipped"]},
+          "reason": {"type": "string"}
+        },
+        "allOf": [{"if": {"properties": {"status": {"enum": ["failed", "skipped"]}}}, "then": {"required": ["reason"]}}],
+        "additionalProperties": false
+      }
+    },
+    "notVerified": {"type": "array", "items": {"type": "string"}},
+    "testCounts": {"$ref": "#/$defs/counts"},
+    "lintCounts": {"type": "object"},
+    "artifacts": {"type": "array"},
+    "screenshots": {"type": "array"}
+  },
+  "$defs": {
+    "counts": {
+      "type": "object", "required": ["passed", "failed", "skipped"],
+      "properties": {"passed": {"type": "integer", "minimum": 0}, "failed": {"type": "integer", "minimum": 0}, "skipped": {"type": "integer", "minimum": 0}},
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

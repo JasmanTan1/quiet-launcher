@@ -1,0 +1,34 @@
+{
+  "serverNow": 1800000000000,
+  "expiresAt": 1800043200000,
+  "order": "first_come",
+  "you": {
+    "id": "guest_1",
+    "name": "Guest One"
+  },
+  "now": {
+    "track": {
+      "id": "track_1",
+      "title": "Synthetic Tone 1",
+      "artist": "Fixture Ensemble",
+      "durationSec": 120,
+      "gainDb": null
+    },
+    "mine": false,
+    "paused": false
+  },
+  "upNext": [
+    {
+      "requestId": "request_1",
+      "track": {
+        "id": "track_2",
+        "title": "Synthetic Tone 2",
+        "artist": "Fixture Ensemble",
+        "durationSec": 120,
+        "gainDb": null
+      },
+      "by": "Guest One",
+      "mine": true
+    }
+  ]
+}

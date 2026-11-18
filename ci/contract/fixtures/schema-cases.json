@@ -1,0 +1,595 @@
+[
+  {
+    "name": "active_snapshot",
+    "schema": "Snapshot",
+    "valid": true,
+    "value": {
+      "roomId": "room_demo",
+      "seq": 10,
+      "serverNow": 1800000000000,
+      "tvConnected": true,
+      "playlists": [
+        {
+          "id": "playlist_demo",
+          "name": "Evening Mix",
+          "scene": "calm",
+          "trackCount": 3
+        }
+      ],
+      "activePlaylistId": "playlist_demo",
+      "resume": {
+        "playlistId": "playlist_demo",
+        "trackId": "track_1",
+        "positionSec": 12.5
+      },
+      "paused": false,
+      "timer": {
+        "id": "timer_demo",
+        "endsAt": 1800000900000,
+        "durationSec": 900
+      },
+      "queue": {
+        "playlistId": "playlist_demo",
+        "custom": false,
+        "tracks": [
+          {
+            "id": "track_1",
+            "title": "Synthetic Tone 1",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          {
+            "id": "track_2",
+            "title": "Synthetic Tone 2",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          {
+            "id": "track_3",
+            "title": "Synthetic Tone 3",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          }
+        ],
+        "anchorId": null
+      },
+      "message": null,
+      "picture": {
+        "scene": null,
+        "uploadId": null
+      },
+      "volume": 65,
+      "cmd": {
+        "n": 4,
+        "action": "play"
+      },
+      "gainRev": 1,
+      "gains": [
+        {
+          "id": "track_1",
+          "gainDb": null
+        },
+        {
+          "id": "track_2",
+          "gainDb": null
+        },
+        {
+          "id": "track_3",
+          "gainDb": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "guest_view",
+    "schema": "GuestState",
+    "valid": true,
+    "value": {
+      "serverNow": 1800000000000,
+      "expiresAt": 1800043200000,
+      "order": "first_come",
+      "you": {
+        "id": "guest_1",
+        "name": "Guest One"
+      },
+      "now": {
+        "track": {
+          "id": "track_1",
+          "title": "Synthetic Tone 1",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        },
+        "mine": false,
+        "paused": false
+      },
+      "upNext": [
+        {
+          "requestId": "request_1",
+          "track": {
+            "id": "track_2",
+            "title": "Synthetic Tone 2",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          "by": "Guest One",
+          "mine": true
+        }
+      ]
+    }
+  },
+  {
+    "name": "party_qr",
+    "schema": "PartyQr",
+    "valid": true,
+    "value": {
+      "enabled": true,
+      "active": true,
+      "url": "https://coordinator.example/guest#t=fixture_party_token_0001",
+      "expiresAt": 1800043200000,
+      "serverNow": 1800000000000
+    }
+  },
+  {
+    "name": "playlist",
+    "schema": "Playlist",
+    "valid": true,
+    "value": {
+      "id": "playlist_demo",
+      "name": "Evening Mix",
+      "scene": "calm",
+      "tracks": [
+        {
+          "id": "track_1",
+          "title": "Synthetic Tone 1",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        },
+        {
+          "id": "track_2",
+          "title": "Synthetic Tone 2",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        },
+        {
+          "id": "track_3",
+          "title": "Synthetic Tone 3",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "pair_pending",
+    "schema": "PairResult",
+    "valid": true,
+    "value": {
+      "status": "pending",
+      "expiresAt": 1800000300000
+    }
+  },
+  {
+    "name": "pair_ready",
+    "schema": "PairResult",
+    "valid": true,
+    "value": {
+      "status": "paired",
+      "deviceId": "device_demo",
+      "deviceToken": "fixture_device_token_0001",
+      "expiresAt": 1802592000000,
+      "sessionId": "session_demo",
+      "snapshot": {
+        "roomId": "room_demo",
+        "seq": 10,
+        "serverNow": 1800000000000,
+        "tvConnected": true,
+        "playlists": [
+          {
+            "id": "playlist_demo",
+            "name": "Evening Mix",
+            "scene": "calm",
+            "trackCount": 3
+          }
+        ],
+        "activePlaylistId": "playlist_demo",
+        "resume": {
+          "playlistId": "playlist_demo",
+          "trackId": "track_1",
+          "positionSec": 12.5
+        },
+        "paused": false,
+        "timer": {
+          "id": "timer_demo",
+          "endsAt": 1800000900000,
+          "durationSec": 900
+        },
+        "queue": {
+          "playlistId": "playlist_demo",
+          "custom": false,
+          "tracks": [
+            {
+              "id": "track_1",
+              "title": "Synthetic Tone 1",
+              "artist": "Fixture Ensemble",
+              "durationSec": 120,
+              "gainDb": null
+            },
+            {
+              "id": "track_2",
+              "title": "Synthetic Tone 2",
+              "artist": "Fixture Ensemble",
+              "durationSec": 120,
+              "gainDb": null
+            },
+            {
+              "id": "track_3",
+              "title": "Synthetic Tone 3",
+              "artist": "Fixture Ensemble",
+              "durationSec": 120,
+              "gainDb": null
+            }
+          ],
+          "anchorId": null
+        },
+        "message": null,
+        "picture": {
+          "scene": null,
+          "uploadId": null
+        },
+        "volume": 65,
+        "cmd": {
+          "n": 4,
+          "action": "play"
+        },
+        "gainRev": 1,
+        "gains": [
+          {
+            "id": "track_1",
+            "gainDb": null
+          },
+          {
+            "id": "track_2",
+            "gainDb": null
+          },
+          {
+            "id": "track_3",
+            "gainDb": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "timer_1",
+    "schema": "TimerSet",
+    "valid": true,
+    "value": {
+      "minutes": 1
+    }
+  },
+  {
+    "name": "timer_240",
+    "schema": "TimerSet",
+    "valid": true,
+    "value": {
+      "minutes": 240
+    }
+  },
+  {
+    "name": "timer_zero",
+    "schema": "TimerSet",
+    "valid": false,
+    "value": {
+      "minutes": 0
+    }
+  },
+  {
+    "name": "timer_over",
+    "schema": "TimerSet",
+    "valid": false,
+    "value": {
+      "minutes": 241
+    }
+  },
+  {
+    "name": "timer_fraction",
+    "schema": "TimerSet",
+    "valid": false,
+    "value": {
+      "minutes": 1.5
+    }
+  },
+  {
+    "name": "volume_min",
+    "schema": "VolumeSet",
+    "valid": true,
+    "value": {
+      "level": 0
+    }
+  },
+  {
+    "name": "volume_max",
+    "schema": "VolumeSet",
+    "valid": true,
+    "value": {
+      "level": 100
+    }
+  },
+  {
+    "name": "volume_over",
+    "schema": "VolumeSet",
+    "valid": false,
+    "value": {
+      "level": 101
+    }
+  },
+  {
+    "name": "picture_reset",
+    "schema": "PictureSet",
+    "valid": true,
+    "value": {}
+  },
+  {
+    "name": "picture_scene",
+    "schema": "PictureSet",
+    "valid": true,
+    "value": {
+      "scene": "cafe"
+    }
+  },
+  {
+    "name": "picture_upload",
+    "schema": "PictureSet",
+    "valid": true,
+    "value": {
+      "uploadId": "photo_demo"
+    }
+  },
+  {
+    "name": "picture_conflict",
+    "schema": "PictureSet",
+    "valid": false,
+    "value": {
+      "scene": "cafe",
+      "uploadId": "photo_demo"
+    }
+  },
+  {
+    "name": "snapshot_picture_conflict",
+    "schema": "Picture",
+    "valid": false,
+    "value": {
+      "scene": "cafe",
+      "uploadId": "photo_demo"
+    }
+  },
+  {
+    "name": "message_input",
+    "schema": "MessageSet",
+    "valid": true,
+    "value": {
+      "text": "Welcome to the room",
+      "style": "banner",
+      "minutes": 30
+    }
+  },
+  {
+    "name": "expired_message_shape",
+    "schema": "Message",
+    "valid": true,
+    "value": {
+      "text": "Welcome",
+      "style": "card",
+      "expiresAt": 1799999999999
+    }
+  },
+  {
+    "name": "message_output_over",
+    "schema": "Message",
+    "valid": false,
+    "value": {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "style": "card",
+      "expiresAt": 1800000000000
+    }
+  },
+  {
+    "name": "only_library_requests",
+    "schema": "GuestAdd",
+    "valid": true,
+    "value": {
+      "trackId": "track_2"
+    }
+  },
+  {
+    "name": "outside_id_rejected",
+    "schema": "GuestAdd",
+    "valid": false,
+    "value": {
+      "videoId": "outside_demo"
+    }
+  },
+  {
+    "name": "url_request_rejected",
+    "schema": "GuestAdd",
+    "valid": false,
+    "value": {
+      "trackId": "track_2",
+      "url": "https://media.example/item"
+    }
+  },
+  {
+    "name": "string_ids_required",
+    "schema": "GuestAdd",
+    "valid": false,
+    "value": {
+      "trackId": 2
+    }
+  },
+  {
+    "name": "resume_sample",
+    "schema": "ResumeWrite",
+    "valid": true,
+    "value": {
+      "playlistId": "playlist_demo",
+      "trackId": "track_1",
+      "positionSec": 12.5,
+      "paused": false,
+      "sessionId": "session_demo",
+      "sampleN": 1
+    }
+  },
+  {
+    "name": "negative_resume",
+    "schema": "ResumeWrite",
+    "valid": false,
+    "value": {
+      "playlistId": "playlist_demo",
+      "trackId": "track_1",
+      "positionSec": -1,
+      "paused": false,
+      "sessionId": "session_demo",
+      "sampleN": 1
+    }
+  },
+  {
+    "name": "complete_exact_timer",
+    "schema": "TimerComplete",
+    "valid": true,
+    "value": {
+      "timerId": "timer_demo"
+    }
+  },
+  {
+    "name": "search_library",
+    "schema": "SearchResult",
+    "valid": true,
+    "value": {
+      "tracks": [
+        {
+          "id": "track_1",
+          "title": "Synthetic Tone 1",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        },
+        {
+          "id": "track_2",
+          "title": "Synthetic Tone 2",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        },
+        {
+          "id": "track_3",
+          "title": "Synthetic Tone 3",
+          "artist": "Fixture Ensemble",
+          "durationSec": 120,
+          "gainDb": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "unknown_control",
+    "schema": "Control",
+    "valid": false,
+    "value": {
+      "action": "download"
+    }
+  },
+  {
+    "name": "inactive_qr",
+    "schema": "PartyQr",
+    "valid": true,
+    "value": {
+      "enabled": false,
+      "active": false,
+      "url": null,
+      "expiresAt": null,
+      "serverNow": 1800000000000
+    }
+  },
+  {
+    "name": "guest_join",
+    "schema": "GuestJoin",
+    "valid": true,
+    "value": {
+      "name": "Guest One"
+    }
+  },
+  {
+    "name": "host_auth",
+    "schema": "HostAuth",
+    "valid": true,
+    "value": {
+      "hostToken": "fixture_host_token_0001",
+      "expiresAt": 1800043200000
+    }
+  },
+  {
+    "name": "setup",
+    "schema": "Setup",
+    "valid": true,
+    "value": {
+      "setupCode": "fixture_setup_code_0001",
+      "publicOrigin": "https://coordinator.example",
+      "library": {
+        "kind": "jellyfin",
+        "baseUrl": "https://library.example",
+        "credential": "fixture_credential_0001"
+      }
+    }
+  },
+  {
+    "name": "opensubsonic_config",
+    "schema": "LibraryConfig",
+    "valid": true,
+    "value": {
+      "kind": "opensubsonic",
+      "baseUrl": "https://library.example",
+      "username": "fixture-user",
+      "credential": "fixture-password"
+    }
+  },
+  {
+    "name": "opensubsonic_requires_username",
+    "schema": "LibraryConfig",
+    "valid": false,
+    "value": {
+      "kind": "opensubsonic",
+      "baseUrl": "https://library.example",
+      "credential": "fixture-password"
+    }
+  },
+  {
+    "name": "join_response",
+    "schema": "GuestJoined",
+    "valid": true,
+    "value": {
+      "guestId": "guest_1",
+      "guestKey": "fixture_guest_key_0001",
+      "expiresAt": 1800043200000
+    }
+  },
+  {
+    "name": "request_response",
+    "schema": "Request",
+    "valid": true,
+    "value": {
+      "id": "request_1",
+      "trackId": "track_2",
+      "guestId": "guest_1",
+      "guestName": "Guest One",
+      "state": "queued"
+    }
+  }
+]

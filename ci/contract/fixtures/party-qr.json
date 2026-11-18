@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "active": true,
+  "url": "https://coordinator.example/guest#t=fixture_party_token_0001",
+  "expiresAt": 1800043200000,
+  "serverNow": 1800000000000
+}

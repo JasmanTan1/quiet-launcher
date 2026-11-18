@@ -1,0 +1,36 @@
+{
+  "status": "frozen-local-identifiers; registry/domain/store availability unverified",
+  "products": {
+    "bgm": {
+      "name": "Ambient Room",
+      "repository": "ambient-room",
+      "androidApplicationId": "org.ambientroom.tv",
+      "androidNamespace": "org.ambientroom.tv",
+      "kotlinPackage": "org.ambientroom.tv",
+      "coordinatorPackage": "@ambient-room/coordinator",
+      "webPackage": "@ambient-room/web",
+      "packagesPrivate": true,
+      "storagePrefix": "ambient-room.v1.",
+      "guestSessionPrefix": "ambient-room.v1.guest.",
+      "dataDirectoryName": "ambient-room",
+      "apiMajor": 1
+    },
+    "launcher": {
+      "name": "Quiet Launcher",
+      "repository": "quiet-launcher",
+      "androidApplicationId": "org.quietlauncher.home",
+      "androidNamespace": "org.quietlauncher.home",
+      "kotlinPackage": "org.quietlauncher.home",
+      "storagePrefix": "quiet-launcher.v1.",
+      "defaultProfile": "Profile One",
+      "networkRequired": false
+    }
+  },
+  "decisions": [
+    "No shared Android identity, signing identity, persistence or account system between products.",
+    "Use fresh neutral icons, banners and screenshot labels; existing art needs separate redistribution evidence.",
+    "Neutral project labels do not establish a legal rights holder or authorize publishing a namespace.",
+    "No default configured origins or service endpoints. Example domains occur only in inert fixtures.",
+    "Changing these frozen identities requires a recorded revision before implementation acceptance."
+  ]
+}

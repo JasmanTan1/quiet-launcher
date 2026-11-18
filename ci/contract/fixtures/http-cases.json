@@ -1,0 +1,260 @@
+[
+  {
+    "name": "state",
+    "operationId": "getState",
+    "request": {
+      "query": {
+        "since": 9,
+        "waitSec": 0
+      }
+    },
+    "status": 200,
+    "response": {
+      "roomId": "room_demo",
+      "seq": 10,
+      "serverNow": 1800000000000,
+      "tvConnected": true,
+      "playlists": [
+        {
+          "id": "playlist_demo",
+          "name": "Evening Mix",
+          "scene": "calm",
+          "trackCount": 3
+        }
+      ],
+      "activePlaylistId": "playlist_demo",
+      "resume": {
+        "playlistId": "playlist_demo",
+        "trackId": "track_1",
+        "positionSec": 12.5
+      },
+      "paused": false,
+      "timer": {
+        "id": "timer_demo",
+        "endsAt": 1800000900000,
+        "durationSec": 900
+      },
+      "queue": {
+        "playlistId": "playlist_demo",
+        "custom": false,
+        "tracks": [
+          {
+            "id": "track_1",
+            "title": "Synthetic Tone 1",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          {
+            "id": "track_2",
+            "title": "Synthetic Tone 2",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          {
+            "id": "track_3",
+            "title": "Synthetic Tone 3",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          }
+        ],
+        "anchorId": null
+      },
+      "message": null,
+      "picture": {
+        "scene": null,
+        "uploadId": null
+      },
+      "volume": 65,
+      "cmd": {
+        "n": 4,
+        "action": "play"
+      },
+      "gainRev": 1,
+      "gains": [
+        {
+          "id": "track_1",
+          "gainDb": null
+        },
+        {
+          "id": "track_2",
+          "gainDb": null
+        },
+        {
+          "id": "track_3",
+          "gainDb": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "start_default",
+    "operationId": "start",
+    "request": {
+      "headers": {
+        "Idempotency-Key": "mutation_start_1"
+      },
+      "body": {}
+    },
+    "status": 200,
+    "response": {
+      "roomId": "room_demo",
+      "seq": 10,
+      "serverNow": 1800000000000,
+      "tvConnected": true,
+      "playlists": [
+        {
+          "id": "playlist_demo",
+          "name": "Evening Mix",
+          "scene": "calm",
+          "trackCount": 3
+        }
+      ],
+      "activePlaylistId": "playlist_demo",
+      "resume": {
+        "playlistId": "playlist_demo",
+        "trackId": "track_1",
+        "positionSec": 12.5
+      },
+      "paused": false,
+      "timer": {
+        "id": "timer_demo",
+        "endsAt": 1800000900000,
+        "durationSec": 900
+      },
+      "queue": {
+        "playlistId": "playlist_demo",
+        "custom": false,
+        "tracks": [
+          {
+            "id": "track_1",
+            "title": "Synthetic Tone 1",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          {
+            "id": "track_2",
+            "title": "Synthetic Tone 2",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          },
+          {
+            "id": "track_3",
+            "title": "Synthetic Tone 3",
+            "artist": "Fixture Ensemble",
+            "durationSec": 120,
+            "gainDb": null
+          }
+        ],
+        "anchorId": null
+      },
+      "message": null,
+      "picture": {
+        "scene": null,
+        "uploadId": null
+      },
+      "volume": 65,
+      "cmd": {
+        "n": 4,
+        "action": "play"
+      },
+      "gainRev": 1,
+      "gains": [
+        {
+          "id": "track_1",
+          "gainDb": null
+        },
+        {
+          "id": "track_2",
+          "gainDb": null
+        },
+        {
+          "id": "track_3",
+          "gainDb": null
+        }
+      ]
+    }
+  },
+  {
+    "name": "join",
+    "operationId": "joinGuest",
+    "request": {
+      "headers": {
+        "Idempotency-Key": "mutation_join_1"
+      },
+      "body": {
+        "name": "Guest One"
+      }
+    },
+    "status": 200,
+    "response": {
+      "guestId": "guest_1",
+      "guestKey": "fixture_guest_key_0001",
+      "expiresAt": 1800043200000
+    }
+  },
+  {
+    "name": "expired",
+    "operationId": "guestState",
+    "request": {},
+    "status": 410,
+    "response": {
+      "error": "ended",
+      "message": "Party over"
+    }
+  },
+  {
+    "name": "blocked",
+    "operationId": "guestControl",
+    "request": {
+      "headers": {
+        "Idempotency-Key": "mutation_control_1"
+      },
+      "body": {
+        "action": "next"
+      }
+    },
+    "status": 403,
+    "response": {
+      "error": "blocked",
+      "message": "Not allowed"
+    }
+  },
+  {
+    "name": "oversize_upload",
+    "operationId": "uploadPicture",
+    "request": {
+      "headers": {
+        "Idempotency-Key": "mutation_upload_1"
+      },
+      "contentType": "image/png",
+      "generatedByteCount": 8388609
+    },
+    "status": 413,
+    "response": {
+      "error": "too_big",
+      "message": "Picture exceeds size limit"
+    }
+  },
+  {
+    "name": "rate_limit",
+    "operationId": "guestSearch",
+    "request": {
+      "query": {
+        "q": "Tone"
+      }
+    },
+    "status": 429,
+    "headers": {
+      "Retry-After": "60"
+    },
+    "response": {
+      "error": "rate_limited",
+      "message": "Try again later"
+    }
+  }
+]

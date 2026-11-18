@@ -1,0 +1,28 @@
+{
+  "id": "playlist_demo",
+  "name": "Evening Mix",
+  "scene": "calm",
+  "tracks": [
+    {
+      "id": "track_1",
+      "title": "Synthetic Tone 1",
+      "artist": "Fixture Ensemble",
+      "durationSec": 120,
+      "gainDb": null
+    },
+    {
+      "id": "track_2",
+      "title": "Synthetic Tone 2",
+      "artist": "Fixture Ensemble",
+      "durationSec": 120,
+      "gainDb": null
+    },
+    {
+      "id": "track_3",
+      "title": "Synthetic Tone 3",
+      "artist": "Fixture Ensemble",
+      "durationSec": 120,
+      "gainDb": null
+    }
+  ]
+}
